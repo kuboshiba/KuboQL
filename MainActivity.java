@@ -31,6 +31,10 @@ public class MainActivity {
               new ShowDatabases();
               break;
             case "tables":
+              if (this.target != null) {
+                new ShowTables("./databases/" + this.target);
+              }
+              else d.error("use [データベース名] でデータベースを選択してください");
               break;
             default:
               d.error("コマンドの使い方が間違っています help か \\h で参照してください");
