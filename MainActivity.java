@@ -20,28 +20,43 @@ public class MainActivity {
 
   //コマンド検索 & 実行
   void SearchCommand() {
-    switch(this.cmd[0]) {
+    switch (this.cmd[0]) {
+
       case "show":
+        if (this.cmd.length == 2) {
+          switch (this.cmd[1]) {
+            case "databases":
+              new ShowDatabases();
+              break;
+            case "tables":
+              break;
+            default:
+              d.error("コマンドの使い方が間違っています help か \\h で参照してください");
+          }
+        } else d.error("コマンドの使い方が間違っています help か \\h で参照してください");
         break;
 
       case "select":
         break;
 
+      case "use":
+        break;
+
       case "help":
       case "\\h":
-        if(this.cmd.length == 1) new PrintTxtFile("./Help.kubota");
+        if (this.cmd.length == 1) new PrintTxtFile("./Help.kubota");
         else d.error("コマンドの使い方が間違っています help か \\h で参照してください");
         break;
 
       case "exit":
-        if(this.cmd.length == 1) {
+        if (this.cmd.length == 1) {
           d.white("Bye.\n\n");
           System.exit(0);
         } else d.error("コマンドの使い方が間違っています help か \\h で参照してください");
         break;
 
       default:
-        d.error("コマンドの使い方が間違っています help か \\h で参照してください");
+        d.error("そのコマンドは存在しません  help か \\h で参照してください");
     }
   }
 
