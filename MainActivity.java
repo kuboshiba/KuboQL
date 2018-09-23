@@ -8,6 +8,8 @@ public class MainActivity {
   String input = null;   //入力文字列を格納
   String[] cmd = null;   //入力文字列を空白区切りで格納
 
+  boolean judge;
+
   MainActivity() {
     while(true) MainLoop();
   }
@@ -40,6 +42,14 @@ public class MainActivity {
         break;
 
       case "use":
+        if (this.cmd.length == 2) {
+          CheckExistDatabases checkExistDatabases = new CheckExistDatabases();
+          if(checkExistDatabases.exist(this.cmd[1]) == true ) {
+            this.target = this.cmd[1];
+            d.log("Database changed.");
+          }
+          else d.error("そのデータベースは存在しません show databases で確認してください");
+        }
         break;
 
       case "help":
