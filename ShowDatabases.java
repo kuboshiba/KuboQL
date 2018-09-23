@@ -3,37 +3,36 @@ public class ShowDatabases {
   ShowDatabases() {
     File file = new File("./databases");
     File files[] = file.listFiles();
-    int len = 0, n;
+    int i,j;
+    int files_num = files.length;
+    int file_len = "Database".length();
 
-    for (int i=0; i<files.length; i++) {
-      if (len < files[i].getName().length()) len = files[i].getName().length();
+    for(i=0; i<files_num; i++) {
+      if (file_len < files[i].getName().length()) file_len = files[i].getName().length();
     }
 
-    len = " Database".length() + Math.abs(" Database".length()-len) + 2;
-
     System.out.print("+");
-    for (int i=0; i<len; i++) System.out.print("-");
+    for(i=0; i<file_len+2; i++) System.out.print("-"); // +2は両端の空白の分
     System.out.println("+");
 
     System.out.print("| Database");
-    for(int i=0; i<len-"| Database".length() + 1; i++) System.out.print(" ");
-    System.out.println("|");
+    for(i=0; i<file_len-"Database".length(); i++) System.out.print(" ");
+    System.out.println(" |");
 
     System.out.print("+");
-    for (int i=0; i<len; i++) System.out.print("-");
+    for(i=0; i<file_len+2; i++) System.out.print("-"); // +2は両端の空白の分
     System.out.println("+");
 
-    for (int i=0; i<files.length; i++) {
+    for(i=0; i<files_num; i++) {
       System.out.print("| " + files[i].getName());
-        n = len - files[i].getName().length();
-      for(int j=0; j<n-1; j++) System.out.print(" ");
-      System.out.println("|");
+      for(j=0; j<file_len-files[i].getName().length(); j++) System.out.print(" ");
+      System.out.println(" |");
     }
 
     System.out.print("+");
-    for (int i=0; i<len; i++) System.out.print("-");
+    for(i=0; i<file_len+2; i++) System.out.print("-"); // +2は両端の空白の分
     System.out.println("+");
 
-    System.out.println(files.length + " rows in set");
+    System.out.println(" " + files.length + " rows in set");
   }
 }
