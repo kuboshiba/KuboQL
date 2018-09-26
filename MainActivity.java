@@ -26,6 +26,7 @@ public class MainActivity {
 
       case "show":
         if (this.cmd.length == 2) {
+
           switch (this.cmd[1]) {
             case "databases":
               new ShowDatabases();
@@ -37,12 +38,20 @@ public class MainActivity {
               else d.error("use [データベース名] でデータベースを選択してください");
               break;
             default:
-              d.error("コマンドの使い方が間違っています help か \\h で参照してください");
+              d.error("show コマンドの使い方が間違っています help か \\h で参照してください");
           }
-        } else d.error("コマンドの使い方が間違っています help か \\h で参照してください");
+        } else d.error("show コマンドの使い方が間違っています help か \\h で参照してください");
         break;
 
       case "select":
+        if (this.target == null) {
+          d.error("use [データベース名] でデータベースを選択してください");
+          break;
+        }
+        if (this.cmd.length >= 3) {
+          new ControlSelect(this.target, this.cmd);
+        }
+        else d.error("select コマンドの使い方が間違っています help か \\h で参照してください");
         break;
 
       case "use":
@@ -59,14 +68,14 @@ public class MainActivity {
       case "help":
       case "\\h":
         if (this.cmd.length == 1) new PrintTxtFile("./Help.kubota");
-        else d.error("コマンドの使い方が間違っています help か \\h で参照してください");
+        else d.error("help コマンドの使い方が間違っています help か \\h で参照してください");
         break;
 
       case "exit":
         if (this.cmd.length == 1) {
           d.white("Bye.\n\n");
           System.exit(0);
-        } else d.error("コマンドの使い方が間違っています help か \\h で参照してください");
+        } else d.error("exit コマンドの使い方が間違っています help か \\h で参照してください");
         break;
 
       default:
@@ -77,7 +86,12 @@ public class MainActivity {
   //コマンド入力関数
   void InputLine() {
     d.bold();
-    d.magenta("KuboQL [" + this.target + "] > ");
+    d.magenta("KuboQL [");
+    d.bold();
+    if(this.target == null) d.yellow(this.target);
+    else d.green(this.target);
+    d.bold();
+    d.magenta("] > ");
     this.input = scanner.nextLine();
     this.cmd = this.input.split("[\\s]+");  // "[\\s]+" <<< 問答無用で空白で区切る
   }
