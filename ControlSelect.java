@@ -18,7 +18,7 @@ public class ControlSelect {
       int cnt = 0, n = 0, i, j;  // 読み込み回数カウント
       String line;  // 1行単位で読み込み
       String[] line_split;  // 読み込んだ1行を分割
-      int[] culum_len = new int[50];
+      int[] culum_len = new int[50];  // カラム数は最大50個まで
 
       while((line = in.readLine()) != null) {
         line_split = line.split(",");
