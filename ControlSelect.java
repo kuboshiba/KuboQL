@@ -15,12 +15,48 @@ public class ControlSelect {
 
   void PrintSelectAll(String path) {
     try (BufferedReader in = new BufferedReader(new FileReader(new File(path)))) {
-      String line;
+      int cnt = 0, n = 0, i, j;  // 読み込み回数カウント
+      String line;  // 1行単位で読み込み
+      String[] line_split;  // 読み込んだ1行を分割
+      int[] culum_len = new int[50];
+
       while((line = in.readLine()) != null) {
-        String[] a = line.split(",");
-        for(int i=0; i<a.length; i++) {
-          System.out.println(a[i]);
+        line_split = line.split(",");
+        if(line_split[0].equals("@eof")) {
+          System.out.print("+");
+          for(i=0; i<n; i++) {
+            for(j=0; j<culum_len[i]; j++) System.out.print("-");
+            System.out.print("+");
+          }
+          System.out.println();
+          break;
         }
+        if (cnt == 0 ) {
+          n = line_split.length;
+          for(i=0; i<line_split.length; i++) culum_len[i] = Integer.parseInt(line_split[i]);
+          System.out.print("+");
+          for(i=0; i<line_split.length; i++) {
+            for(j=0; j<culum_len[i]; j++) System.out.print("-");
+            System.out.print("+");
+          }
+          System.out.println();
+        }  else {
+          for(i=0; i<line_split.length; i++) {
+            System.out.print("| " + line_split[i]);
+            int temp = culum_len[i] - line_split[i].length() - 1;
+            for(j=0; j<temp; j++) System.out.print(" ");
+          }
+          System.out.println("|");
+          if(cnt == 1) {
+            System.out.print("+");
+            for(i=0; i<line_split.length; i++) {
+              for(j=0; j<culum_len[i]; j++) System.out.print("-");
+              System.out.print("+");
+            }
+            System.out.println();
+          }
+        }
+        cnt++;
       }
     } catch (FileNotFoundException e) {
       e.printStackTrace();
