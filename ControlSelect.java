@@ -5,7 +5,6 @@ public class ControlSelect {
     if(cmd.length == 3 && cmd[1].equals("*from")) SelectAll("./databases/" + database + "/" + cmd[2]);
     else if(cmd.length == 4 && cmd[1].equals("*") && cmd[2].equals("from")) SelectAll("./databases/" + database + "/" + cmd[3]);
     else if(cmd.length == 3 && cmd[1].equals("from")) d.error("select コマンドの使い方が間違っています help か \\h で参照してください");
-    else SelectAll("./databases/" + database + "/" + cmd[2]);
   }
 
   void SelectAll(String path) {
