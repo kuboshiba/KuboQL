@@ -18,6 +18,9 @@ public class ControlSelect {
       String line;
       while((line = in.readLine()) != null) {
         String[] a = line.split(",");
+        for(int i=0; i<a.length; i++) {
+          System.out.println(a[i]);
+        }
       }
     } catch (FileNotFoundException e) {
       e.printStackTrace();
