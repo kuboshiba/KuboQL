@@ -29,8 +29,7 @@ public class ControlSelect {
             System.out.print("+");
           }
           System.out.println();
-          System.out.println(" " + String.valueOf(cnt-2) + " rows in set");
-          System.out.println();
+          System.out.println(" " + String.valueOf(cnt-2) + " rows in set" + "\n");
           break;
         }
         if (cnt == 0 ) {
