@@ -17,7 +17,6 @@ public class ControlSelect {
     try (BufferedReader in = new BufferedReader(new FileReader(new File(path)))) {
       String line;
       while((line = in.readLine()) != null) {
-        System.out.println(line);
         String[] a = line.split(",");
       }
     } catch (FileNotFoundException e) {
