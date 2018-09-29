@@ -65,6 +65,19 @@ public class MainActivity {
         }
         break;
 
+      case "create":
+        if (this.cmd.length == 3) {
+          switch (this.cmd[1]) {
+            case "database":
+              break;
+            case "table":
+              break;
+            default:
+              d.error("");
+          }
+        }
+        break;
+
       case "help":
       case "\\h":
         if (this.cmd.length == 1) new PrintTxtFile("./Help.kubota");
