@@ -112,7 +112,7 @@ public class MainActivity {
     d.bold();
     d.magenta("KuboQL [");
     d.bold();
-    if(this.target == null) d.yellow(this.target);
+    if(this.target == null) d.red(this.target);
     else d.green(this.target);
     d.bold();
     d.magenta("] > ");
