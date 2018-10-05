@@ -33,6 +33,6 @@ public class ShowDatabases {
     for(i=0; i<file_len+2; i++) System.out.print("-"); // +2は両端の空白の分
     System.out.println("+");
 
-    System.out.println(" " + files.length + " rows in set");
+    System.out.println(" " + files.length + " rows in set" + "\n");
   }
 }

@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 public class MainActivity {
@@ -65,6 +66,29 @@ public class MainActivity {
         }
         break;
 
+      case "create":
+        if (this.cmd.length == 3) {
+          switch (this.cmd[1]) {
+            case "database":
+              File file = new File("./databases/" + this.cmd[2]);
+              if (!file.exists()) {
+                file.mkdir();
+                d.log("mkdir ./databases/" + this.cmd[2]);
+              } else d.error("そのデータベースは既に存在しています");
+              break;
+            case "table":
+              if (this.target != null) {
+                new CreateTable(this.target, this.cmd[2]);
+              } else d.error("use [データベース名] でデータベースを選択してください");
+              break;
+            default:
+              d.error("create コマンドの使い方が間違っています help か \\h で参照してください");
+          }
+        } else {
+          d.error("create コマンドの使い方が間違っています help か \\h で参照してください");
+        }
+        break;
+
       case "help":
       case "\\h":
         if (this.cmd.length == 1) new PrintTxtFile("./Help.kubota");
@@ -88,7 +112,7 @@ public class MainActivity {
     d.bold();
     d.magenta("KuboQL [");
     d.bold();
-    if(this.target == null) d.yellow(this.target);
+    if(this.target == null) d.red(this.target);
     else d.green(this.target);
     d.bold();
     d.magenta("] > ");

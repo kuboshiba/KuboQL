@@ -27,4 +27,6 @@ public class Define {
   void cyan(String msg) { System.out.print(cyan + msg + reset); }
   void white(String msg) { System.out.print(white + msg + reset); }
 
+  void ln() { System.out.println(); }
+  void ln(int cnt) { for(int i=0; i<cnt; i++) System.out.println(); }
 }
