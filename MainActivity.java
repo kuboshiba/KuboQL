@@ -114,7 +114,7 @@ public class MainActivity {
        	}
        	break;
        case "delete":
-       	if(this.cmd.length==7){
+       	if(this.cmd.length==7 && this.cmd[1].equals("from")){
        		if(this.target!=null){
        			new delete(this.target,this.cmd[2],this.cmd[4],this.cmd[5],this.cmd[6]);
        		}else{
