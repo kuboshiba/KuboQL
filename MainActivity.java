@@ -123,7 +123,19 @@ public class MainActivity {
        	}else{
        		d.error("deleteコマンドの使い方が間違っています helpか\\ｈで参照してください");
        	}
-       	break;	
+       	break;
+       	
+       case "drop":
+       		if(this.cmd.length==3 && this.cmd[1].equals("from")){
+       			if(this.target!=null){
+       				new drop(this.target,this.cmd[2]);
+       			}else{
+       				d.error("use [データベース名]でデータベースを選択してください");
+       			}
+       		}else{
+       			d.error("dropコマンドの使い方が間違っています help　か \\h で参照してください");
+       		}
+       		break;	
 
       default://入力された1単語目がどの分岐にも当てはまらなかった場合
         d.error("そのコマンドは存在しません  help か \\h で参照してください");
