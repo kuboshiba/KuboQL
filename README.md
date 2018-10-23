@@ -7,54 +7,54 @@
 `java KuboQL`
 
 ## Description
-【 データベース・テーブル一覧表示 】
+【 データベース・テーブル一覧表示 】<br>
 
-show databases
-show tables     ※ 要データベースを選択
-
-
-【 指定したテーブルのデータを全て出力 】
-
-select * from [テーブル名]
-select *from [テーブル名]
+show databases<br>
+show tables     ※ 要データベースを選択<br>
 
 
-【 指定したカラムのデータを出力 】
+【 指定したテーブルのデータを全て出力 】<br>
 
-select [コンマ区切りでカラムを指定] from [テーブル名]
-
-
-【 データベースを選択 】
-
-use [データベース名]
+select * from [テーブル名]<br>
+select *from [テーブル名]<br>
 
 
-【 指定したテーブルのカラム一覧を出力 】
+【 指定したカラムのデータを出力 】<br>
 
-desc [テーブル名]
-
-
-【 データベース・テーブルを作成 】
-
-create database
-create table
+select [コンマ区切りでカラムを指定] from [テーブル名]<br>
 
 
-【 指定したテーブルにカラムを追加・データの挿入 】
+【 データベースを選択 】<br>
 
-insert table [テーブル名]
-
-
-【データベース・テーブルを消去】
-
-drop database [データベース名]
-drop table [テーブル名]
+use [データベース名]<br>
 
 
-【テーブルの要素を消去】
+【 指定したテーブルのカラム一覧を出力 】<br>
 
-delete from [テーブル名] where [条件]
+desc [テーブル名]<br>
 
 
-【 プログラムを終了 】
+【 データベース・テーブルを作成 】<br>
+
+create database<br>
+create table<br>
+
+
+【 指定したテーブルにカラムを追加・データの挿入 】<br>
+
+insert table [テーブル名]<br>
+
+
+【データベース・テーブルを消去】<br>
+
+drop database [データベース名]<br>
+drop table [テーブル名]<br>
+
+
+【テーブルの要素を消去】<br>
+
+delete from [テーブル名] where [条件]<br>
+
+
+【 プログラムを終了 】<br>
 exit
