@@ -126,7 +126,7 @@ public class MainActivity {
        	break;
        	
        case "drop":
-       		if(this.cmd.length==3 && this.cmd[1].equals("from")){
+       		if(this.cmd.length==3 && this.cmd[1].equals("table")){
        			if(this.target!=null){
        				new drop(this.target,this.cmd[2]);
        			}else{
