@@ -35,5 +35,9 @@ drop database [データベース名]
 drop table [テーブル名]
 
 
+【テーブルの要素を消去】
+delete from [テーブル名] where [条件]
+
+
 【 プログラムを終了 】
 exit
