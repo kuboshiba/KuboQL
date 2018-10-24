@@ -36,8 +36,8 @@
 
 ### 【 データベース・テーブルを作成 】<br>
 
-`create database`<br>
-`create table`<br>
+`create database [データベース名]`<br>
+`create table [テーブル名]`<br>
 
 
 ### 【 指定したテーブルにカラムを追加・データの挿入 】<br>
