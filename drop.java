@@ -6,7 +6,7 @@ public class drop{
 		
 		if(file.exists()){
 			if(file.delete()){
-				d.log("削除しました");
+				d.log(path+"を削除しました");
 			}else{
 				d.error("削除できませんでした");
 			}

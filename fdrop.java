@@ -8,7 +8,7 @@ public class fdrop{
 			return;
 		}
 		if(file.isFile()){
-			d.error("dropコマンドの使い方が間違っています");
+			d.error("dropコマンドの使い方が間違っています helpか\\ｈで参照してください");
 			return;
 		}
 		File[] f=file.listFiles();
@@ -16,6 +16,6 @@ public class fdrop{
 			new drop(f[i].getPath());
 		}
 		file.delete();
-		d.log("databaseを削除しました");
+		d.log(path+"を削除しました");
 	}
 }
