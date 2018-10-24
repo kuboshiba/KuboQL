@@ -50,7 +50,7 @@ public class MainActivity {
           break;//この先に進まないようにするためのbreak
         }
         if (this.cmd.length >= 3) {//入力されたコマンドが3単語以上なら
-          new ControlSelect(this.target, this.cmd);//ｃontrolselect参照.引数は（指定されているデータベースの名前,入力されたコマンドを区切ったやつ）
+          new ControlSelect(this.target, this.cmd, this.input);//ｃontrolselect参照.引数は（指定されているデータベースの名前,入力されたコマンドを区切ったやつ）
         }
         else d.error("select コマンドの使い方が間違っています help か \\h で参照してください");//4以上の単語が入力されていた場合はエラー
         break;//switch-caseの選択肢の動作終了
@@ -101,7 +101,7 @@ public class MainActivity {
           System.exit(0);//プログラムの終了
         } else d.error("exit コマンドの使い方が間違っています help か \\h で参照してください");//入力が1単語ではなかった場合のエラー
         break;//選択肢終了
-        
+
        case "sort"://sortの場合[1]
        	if(this.cmd.length==3){//入力された単語が3か？
        		if(this.target!=null){//targetが指定されているか？
@@ -124,7 +124,7 @@ public class MainActivity {
        		d.error("deleteコマンドの使い方が間違っています helpか\\ｈで参照してください");
        	}
        	break;
-       	
+
        case "drop":
        		if(this.cmd.length==3 && this.cmd[1].equals("table")){
        			if(this.target!=null){
@@ -135,13 +135,26 @@ public class MainActivity {
        		}else{
        			d.error("dropコマンドの使い方が間違っています help　か \\h で参照してください");
        		}
-       		break;	
-       	
+       		break;
+
        	case "insert":
        		if(this.cmd[1].equals("table")){
-    			new insert(this.target,this.cmd[2]);
-    		}else d.error("insertコマンドの使い方が間違っています help か \\h　で参照してください");
-    	break;
+    			  new insert(this.target,this.cmd[2]);
+    		  } else d.error("insertコマンドの使い方が間違っています help か \\h　で参照してください");
+          break;
+
+          case "desc":
+          if (this.cmd.length == 2 && this.target != null) {
+            CheckExistTable checkExistTable = new CheckExistTable();
+            if( checkExistTable.exist("./databases/" + this.target + "/" + this.cmd[1])) {
+              new DescTable("./databases/" + this.target + "/" + this.cmd[1]);
+            } else {
+              d.error("そのテーブルは存在しません show tables で確認してください");
+              break;
+            }
+          }
+          else d.error("descコマンドの使い方が間違っています help　か \\h で参照してください");
+       break;
 
       default://入力された1単語目がどの分岐にも当てはまらなかった場合
         d.error("そのコマンドは存在しません  help か \\h で参照してください");
