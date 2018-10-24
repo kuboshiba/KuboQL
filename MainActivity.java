@@ -50,7 +50,7 @@ public class MainActivity {
           break;//この先に進まないようにするためのbreak
         }
         if (this.cmd.length >= 3) {//入力されたコマンドが3単語以上なら
-          new ControlSelect(this.target, this.cmd);//ｃontrolselect参照.引数は（指定されているデータベースの名前,入力されたコマンドを区切ったやつ）
+          new ControlSelect(this.target, this.cmd, this.input);//ｃontrolselect参照.引数は（指定されているデータベースの名前,入力されたコマンドを区切ったやつ）
         }
         else d.error("select コマンドの使い方が間違っています help か \\h で参照してください");//4以上の単語が入力されていた場合はエラー
         break;//switch-caseの選択肢の動作終了
