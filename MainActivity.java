@@ -133,7 +133,7 @@ public class MainActivity {
        			}else{
        				d.error("use [データベース名]でデータベースを選択してください");
        			}
-       		}else if(this.cmd.length==3 && this.cmd[1].equals("databases")){
+       		}else if(this.cmd.length==3 && this.cmd[1].equals("database")){
        			String fdroppath="./databases/"+this.cmd[2];
        			if(this.cmd[2].equals(this.target)){
        				this.target=null;
