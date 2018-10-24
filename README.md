@@ -7,7 +7,7 @@
 `java KuboQL`
 
 ## Description
-###【 データベース・テーブル一覧表示 】<br>
+### 【 データベース・テーブル一覧表示 】<br>
 
 `show databases`<br>
 `show tables     ※ 要データベースを選択`<br>
@@ -51,10 +51,10 @@
 `drop table [テーブル名]`<br>
 
 
-【テーブルの要素を消去】<br>
+### 【テーブルの要素を消去】<br>
 
 `delete from [テーブル名] where [条件]`<br>
 
 
-【 プログラムを終了 】<br>
+### 【 プログラムを終了 】<br>
 `exit`
