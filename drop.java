@@ -1,18 +1,17 @@
 import java.io.*;
 public class drop{
-	drop(String databases,String table){
-		String path="./databases/"+databases+"/"+table;
+	drop(String path){
 		Define d =new Define();
 		File file =new File(path);
 		
 		if(file.exists()){
 			if(file.delete()){
-				d.log(table+"を削除しました");
+				d.log("削除しました");
 			}else{
-				d.error(table+"を削除できませんでした");
+				d.error("削除できませんでした");
 			}
 		}else{
-			d.error(table+"が見つかりません");
+			d.error("見つかりません");
 		}
 	}
 }

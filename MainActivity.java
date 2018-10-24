@@ -126,9 +126,10 @@ public class MainActivity {
        	break;
        	
        case "drop":
-       		if(this.cmd.length==3 && this.cmd[1].equals("from")){
+       		if(this.cmd.length==3 && this.cmd[1].equals("table")){
        			if(this.target!=null){
-       				new drop(this.target,this.cmd[2]);
+       				String droppath="./databases/"+this.target+"/"+this.cmd[2];
+       				new drop(droppath);
        			}else{
        				d.error("use [データベース名]でデータベースを選択してください");
        			}
