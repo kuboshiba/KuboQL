@@ -135,6 +135,9 @@ public class MainActivity {
        			}
        		}else if(this.cmd.length==3 && this.cmd[1].equals("databases")){
        			String fdroppath="./databases/"+this.cmd[2];
+       			if(this.cmd[2].equals(this.target)){
+       				this.target=null;
+       			}
        			new fdrop(fdroppath);
        		}else{
        			d.error("dropコマンドの使い方が間違っています help　か \\h で参照してください");
