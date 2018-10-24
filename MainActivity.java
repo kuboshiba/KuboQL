@@ -136,6 +136,10 @@ public class MainActivity {
        			d.error("dropコマンドの使い方が間違っています help　か \\h で参照してください");
        		}
        		break;	
+       	
+       	case "insert":
+    	new insert(this.target,this.cmd[1]);
+    	break;
 
       default://入力された1単語目がどの分岐にも当てはまらなかった場合
         d.error("そのコマンドは存在しません  help か \\h で参照してください");
