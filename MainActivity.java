@@ -138,7 +138,9 @@ public class MainActivity {
        		break;	
        	
        	case "insert":
-    	new insert(this.target,this.cmd[1]);
+       		if(this.cmd[1].equals("table")){
+    			new insert(this.target,this.cmd[2]);
+    		}else d.error("insertコマンドの使い方が間違っています help か \\h　で参照してください");
     	break;
 
       default://入力された1単語目がどの分岐にも当てはまらなかった場合
