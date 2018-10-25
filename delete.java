@@ -11,7 +11,7 @@ public class delete{
 	public void erase(String path,String target,String operator,String conditions){
 		Define d = new Define();
 		try (BufferedReader in = new BufferedReader(new FileReader(new File(path)))) {//pathについていろいろ。わからん！
-      			int cnt = 0, n = 0, i=0, j=0,x=0,y=0,targetnum=0,z=0,longcheck=0,oldlongcheck=0,yi=0;  // 読み込み回数カウント
+      			int cnt = 0, n = 0, i=0, j=0,x=0,y=0,targetnum=0,z=0,longcheck=0,oldlongcheck=0,yi=0,comp=0;  // 読み込み回数カウント
       			String line;  // 1行単位で読み込み
      			 String[] line_split;  // 読み込んだ1行を分割
 		
@@ -167,11 +167,13 @@ public class delete{
       						pw.print(data[l][zw]+",");
       					}
       					pw.println(data[l][zw]);
+      				}else{
+      					comp=comp+1;
       				}
       			}
       			pw.println("@eof");
       			pw.close();
-      			d.log(target+operator+conditions+"のdelete完了");
+      			d.log(target+operator+conditions+"のdelete完了(該当"+comp+")");
 		}catch (FileNotFoundException e) {
       			e.printStackTrace();
       			System.exit(-1); // 0 以外は異常終了

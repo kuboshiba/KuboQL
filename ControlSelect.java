@@ -1,10 +1,52 @@
 import java.io.*;
 public class ControlSelect {
   Define d = new Define();
-  ControlSelect(String database, String[] cmd) {
+  ControlSelect(String database, String[] cmd, String input) {
     if(cmd.length == 3 && cmd[1].equals("*from")) SelectAll("./databases/" + database + "/" + cmd[2]);
     else if(cmd.length == 4 && cmd[1].equals("*") && cmd[2].equals("from")) SelectAll("./databases/" + database + "/" + cmd[3]);
     else if(cmd.length == 3 && cmd[1].equals("from")) d.error("select コマンドの使い方が間違っています help か \\h で参照してください");
+    else SelectDesignation(database, cmd, input);
+  }
+
+  void SelectDesignation(String database, String[] cmd, String input) {
+    String _temp = input.replace("select","");
+    _temp = _temp.substring(1, _temp.indexOf("from")-1);
+    _temp = _temp.replace(" ", "");
+
+    String[] column_list = _temp.split(",");
+    String path = "./databases/" + database + "/" + cmd[cmd.length-1];
+
+    CheckExistTable checkExistTable = new CheckExistTable();
+    if (checkExistTable.exist(path)) {
+      if (checkExistTable.exist_column(path, column_list)) PrintSelectDesignation(path, column_list);
+      else d.error("指定されたカラムは存在しません desc [テーブル名] で確認してください");
+    }
+    else d.error("そのテーブルは存在しません show tables で確認してください");
+  }
+
+  void PrintSelectDesignation(String path, String[] column_list) {
+    File file = new File(path);
+    try (BufferedReader in = new BufferedReader(new FileReader(new File(path)))) {
+      String line;
+      String[] line_split;
+      int[] culum_len = new int[50];
+      int cnt = 0;
+      while((line = in.readLine()) != null) {
+        line_split = line.split(",");
+        if (line_split.length == column_list.length) {
+          SelectAll(path);
+          break;
+        }
+        if (cnt == 0) {
+        }
+      }
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+      System.exit(-1); // 0 以外は異常終了
+    } catch (IOException e) {
+      e.printStackTrace();
+      System.exit(-1);
+    }
   }
 
   void SelectAll(String path) {
