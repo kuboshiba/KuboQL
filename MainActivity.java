@@ -128,14 +128,22 @@ public class MainActivity {
        case "drop":
        		if(this.cmd.length==3 && this.cmd[1].equals("table")){
        			if(this.target!=null){
-       				new drop(this.target,this.cmd[2]);
+       				String droppath="./databases/"+this.target+"/"+this.cmd[2];
+       				new drop(droppath);
        			}else{
        				d.error("use [データベース名]でデータベースを選択してください");
        			}
+       		}else if(this.cmd.length==3 && this.cmd[1].equals("database")){
+       			String fdroppath="./databases/"+this.cmd[2];
+       			if(this.cmd[2].equals(this.target)){
+       				this.target=null;
+       			}
+       			new fdrop(fdroppath);
        		}else{
        			d.error("dropコマンドの使い方が間違っています help　か \\h で参照してください");
        		}
-       		break;
+       		break;	
+
 
        	case "insert":
        		if(this.cmd[1].equals("table")){
