@@ -8,7 +8,7 @@ public class sort{
     			if (!file.exists()) d.error("そのテーブルは存在しません show tables で確認してください");
     			else sorting(path,number);
 		}else{
-			d.error("sortの使い方ミスってるわ");
+			d.error("sortコマンドの使い方が間違っています helpか\\ｈで参照してください");
 		}
 	}
 	
@@ -41,7 +41,7 @@ public class sort{
       			in.close();//先頭に戻すため一回閉じて
       			int que=Integer.parseInt(number);//数字化
       			if(que>i){
-      				d.error("数字デカすぎん？");
+      				d.error("ソート対象のセルが見つかりません desc [テーブル名]でソート対象を確認してください");
       				return;
       			}
       			BufferedReader inn = new BufferedReader(new FileReader(new File(path)));//また開く
@@ -57,7 +57,7 @@ public class sort{
       					}
       				}
       			}
-      			String[] swap=new String[i];
+      			String[] swap=new String[i];//swapはソート時の退避
       			for(int w=2;w<cnt-1;w++){
       				for(j=w+1;j<cnt-1;j++){
       					if(data[w][que].compareToIgnoreCase(data[j][que])>0){
@@ -69,7 +69,7 @@ public class sort{
       					}	
       				}
       			}
-      			inn.close();//閉じるわ
+      			inn.close();//閉じる
 			FileWriter file = new FileWriter(path);
       			PrintWriter pw = new PrintWriter(new BufferedWriter(file));
       			for(int l=0;l<cnt-1;l++){
