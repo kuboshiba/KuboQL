@@ -58,7 +58,7 @@ public class SelectColumn {
 							}
 						}
 						if(nocolumn == 1) {
-							d.error("そのカラムは存在しません");
+							d.error("そのカラムは存在しません　desc [テーブル名]で確認してください");
 							break all_loop;
 						}
 						else {
