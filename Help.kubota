@@ -22,8 +22,8 @@ desc [テーブル名]
 
 
 【 データベース・テーブルを作成 】
-create database
-create table
+create database [新データベース名]
+create table [新テーブル名]
 
 
 【 指定したテーブルにカラムを追加・データの挿入 】
@@ -38,6 +38,8 @@ drop table [テーブル名]
 【テーブルの要素を消去】
 delete from [テーブル名] where [条件]
 
+【テーブル内データのソート】
+sort [テーブル名] [カラム番号]
 
 【 プログラムを終了 】
 exit
