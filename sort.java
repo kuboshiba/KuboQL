@@ -41,7 +41,7 @@ public class sort{
       			in.close();//先頭に戻すため一回閉じて
       			int que=Integer.parseInt(number);//数字化
       			if(que>i){
-      				d.error("ソート対象のセルが見つかりません desc [テーブル名]でソート対象を確認してください");
+      				d.error("ソート対象のカラムが見つかりません desc [テーブル名]でソート対象を確認してください");
       				return;
       			}
       			BufferedReader inn = new BufferedReader(new FileReader(new File(path)));//また開く
